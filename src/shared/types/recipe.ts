@@ -17,3 +17,9 @@ export type Recipe = {
   reviewCount: number;
   mealType: string[];
 };
+export type RecipeResponse = {
+  recipes: Recipe[];
+  total: number;
+  skip: number;
+  limit: number;
+};
