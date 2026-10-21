@@ -1,0 +1,29 @@
+@import 'tailwindcss';
+
+/* Charte graphique : chaque valeur devient une classe Tailwind (bg-brand, text-ink, font-display…) */
+@theme {
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-display: 'Fraunces', Georgia, serif;
+
+  --color-brand: #c2410c;
+  --color-brand-light: #ffedd5;
+  --color-cream: #fff7ed;
+  --color-ink: #292524;
+  --color-muted: #78716c;
+  --color-border: #e7e5e4;
+  --color-success: #4d7c0f;
+  --color-success-light: #ecfccb;
+  --color-danger: #dc2626;
+  --color-danger-light: #fef2f2;
+}
+
+@layer base {
+  body {
+    @apply bg-cream font-sans text-ink antialiased;
+  }
+
+  /* Focus bien visible au clavier, exigé par les consignes (accessibilité) */
+  :focus-visible {
+    @apply outline-3 outline-offset-2 outline-brand;
+  }
+}
