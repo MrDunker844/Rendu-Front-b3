@@ -15,7 +15,7 @@ export default function Header() {
           to={ROUTES.home}
           className="font-display text-xl font-bold text-brand sm:text-2xl"
         >
-          Les Petites Recettes de Floflo
+          Les Petites Recettes de FloFlo
         </Link>
 
         <nav aria-label="Navigation principale">
