@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router';
 import HomePage from './features/home/pages/HomePage.tsx';
 import FavoritesPage from './features/favorites/pages/FavoritesPage.tsx';
 import RecipesPage from './features/recipes/pages/RecipesPage.tsx';
+import RecipeDetailPage from './features/recipes/pages/RecipeDetailPage.tsx';
 import CreateRecipePage from './features/create-recipe/pages/CreateRecipePage.tsx';
 import NotFoundPage from './shared/pages/NotFoundPage.tsx';
 import { ROUTES } from './shared/routes.ts';
@@ -15,6 +16,7 @@ export default function App() {
         <Routes>
           <Route path={ROUTES.home} element={<HomePage />} />
           <Route path={ROUTES.recipes} element={<RecipesPage />} />
+          <Route path={ROUTES.recipeDetail} element={<RecipeDetailPage />} />
           <Route path={ROUTES.favorites} element={<FavoritesPage />} />
           <Route path={ROUTES.createRecipe} element={<CreateRecipePage />} />
           <Route path="*" element={<NotFoundPage />} />
