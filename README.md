@@ -88,6 +88,7 @@ Son adresse est définie dans `src/shared/constants.ts` (`API_BASE_URL`).
 ## Bonus
 
 - Projet réalisé en **TypeScript**.
+- Projet publié sur **Vercel** : https://rendu-front-b3.vercel.app/
 
 ## Limites et problèmes connus
 
@@ -110,4 +111,8 @@ Son adresse est définie dans `src/shared/constants.ts` (`API_BASE_URL`).
 
 ## Déploiement
 
-Le projet n'est pas déployé.
+Application en ligne : **https://rendu-front-b3.vercel.app/**
+
+Le déploiement est automatique à chaque `git push` sur la branche `master`.
+Le fichier `vercel.json` redirige toutes les URL vers `index.html`, pour que l'accès direct à une page
+(par exemple `/recettes/5`) et le rechargement fonctionnent : c'est React Router qui affiche ensuite la bonne page.
