@@ -1,23 +1,19 @@
-import { useState } from 'react';
 import EmptyState from '../../../shared/components/ui/EmptyState.tsx';
 import ErrorMessage from '../../../shared/components/ui/ErrorMessage.tsx';
 import LoadingSpinner from '../../../shared/components/ui/LoadingSpinner.tsx';
 import Pagination from '../../../shared/components/ui/Pagination.tsx';
 import RecipeGrid from '../../../shared/components/recipe/RecipeGrid.tsx';
 import RecipeFiltersForm from '../components/RecipeFiltersForm.tsx';
+import useRecipeFilters from '../hooks/useRecipeFilters.ts';
 import useRecipes from '../hooks/useRecipes.ts';
-import {
-  DEFAULT_RECIPE_FILTERS,
-  type RecipeFilters,
-} from '../types/recipeFilters.ts';
 import { getCuisineOptions } from '../utils/cuisineOptions.ts';
 import { filterRecipes } from '../utils/filterRecipes.ts';
 import { getRecipesForPage, getTotalPages } from '../utils/pagination.ts';
 
 export default function RecipesPage() {
   const { recipes, isLoading, errorMessage, retryFetchRecipes } = useRecipes();
-  const [currentPage, setCurrentPage] = useState(1);
-  const [filters, setFilters] = useState(DEFAULT_RECIPE_FILTERS);
+  const { filters, currentPage, changeFilters, changePage } =
+    useRecipeFilters();
 
   const filteredRecipes = filterRecipes(recipes, filters);
   const cuisineOptions = getCuisineOptions(recipes);
@@ -25,13 +21,8 @@ export default function RecipesPage() {
   const totalPages = getTotalPages(filteredRecipes.length);
   const recipesOnCurrentPage = getRecipesForPage(filteredRecipes, currentPage);
 
-  function handleFiltersChange(newFilters: RecipeFilters) {
-    setFilters(newFilters);
-    setCurrentPage(1);
-  }
-
   function handlePageChange(newPage: number) {
-    setCurrentPage(newPage);
+    changePage(newPage);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
@@ -50,7 +41,7 @@ export default function RecipesPage() {
           <RecipeFiltersForm
             filters={filters}
             cuisineOptions={cuisineOptions}
-            onFiltersChange={handleFiltersChange}
+            onFiltersChange={changeFilters}
           />
 
           {filteredRecipes.length === 0 ? (
