@@ -1,11 +1,9 @@
-import type { Difficulty } from '../../../shared/types/recipe.ts';
+import {
+  FIELD_CLASSES,
+  LABEL_CLASSES,
+} from '../../../shared/components/ui/formStyles.ts';
+import { DIFFICULTY_OPTIONS } from '../../../shared/constants.ts';
 import type { RecipeFilters } from '../types/recipeFilters.ts';
-
-const DIFFICULTY_OPTIONS: Difficulty[] = ['Easy', 'Medium'];
-
-const FIELD_CLASSES =
-  'w-full rounded-xl border-2 border-border bg-white px-4 py-3 text-ink transition focus:border-brand';
-const LABEL_CLASSES = 'text-sm font-semibold text-ink';
 
 type RecipeFiltersFormProps = {
   filters: RecipeFilters;

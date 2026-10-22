@@ -6,7 +6,8 @@ import {
 
 type ButtonProps = {
   children: string;
-  onClick: () => void;
+  onClick?: () => void;
+  type?: 'button' | 'submit';
   variant?: ButtonVariant;
   disabled?: boolean;
 };
@@ -16,10 +17,11 @@ export default function Button({
   onClick,
   variant = 'primary',
   disabled = false,
+  type = 'button',
 }: ButtonProps) {
   return (
     <button
-      type="button"
+      type={type}
       onClick={onClick}
       disabled={disabled}
       className={`${BUTTON_BASE_CLASSES} ${BUTTON_VARIANT_CLASSES[variant]}`}
