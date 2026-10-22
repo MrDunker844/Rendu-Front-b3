@@ -38,6 +38,19 @@ Ouvrir ensuite l'adresse affichée dans le terminal (par défaut http://localhos
 | `npm run lint`         | Analyse le code avec Oxlint                           |
 | `npm run format`       | Formate tout le code avec Prettier                    |
 | `npm run format:check` | Vérifie le formatage sans modifier les fichiers       |
+| `npm run test:e2e`     | Lance les tests end-to-end Playwright                 |
+
+### Tests end-to-end
+
+```bash
+npx playwright install   # une seule fois : télécharge les navigateurs de test
+npm run test:e2e         # ou : npx playwright test --ui (interface graphique)
+```
+
+Playwright démarre lui-même le serveur de développement. Les tests couvrent la création d'une recette
+(succès, validation, échec puis « Réessayer »), la recherche et la pagination, la fiche détail
+(depuis une carte, accès direct, conservation de la recherche), les favoris et la page 404.
+Ils appellent la vraie API DummyJSON : une panne de l'API peut les faire échouer.
 
 ## Configuration
 
@@ -52,6 +65,7 @@ Son adresse est définie dans `src/shared/constants.ts` (`API_BASE_URL`).
 | **TypeScript**            | Typage des données de l'API, des props, des states et des fonctions |
 | **React Router**          | Navigation entre les pages, paramètre d'URL pour la fiche détail    |
 | **Tailwind CSS 4**        | Mise en forme, charte définie dans `src/index.css` (`@theme`)       |
+| **Playwright**            | Tests end-to-end des parcours utilisateur (`tests/`)                |
 | **Oxlint** / **Prettier** | Linter et formateur de code                                         |
 
 - **Requêtes** : `fetch` et des hooks personnalisés (`useRecipes`, `useRecipe`, `useCreateRecipe`), sans bibliothèque supplémentaire.
