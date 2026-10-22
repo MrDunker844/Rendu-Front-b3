@@ -23,35 +23,38 @@ export default function Pagination({
   const isLastPage = currentPage === totalPages;
 
   return (
-    <nav
-      aria-label="Pagination"
-      className="flex flex-wrap items-center justify-center gap-2"
-    >
-      <Button
-        variant="outline"
-        disabled={isFirstPage}
-        onClick={() => onPageChange(currentPage - 1)}
-      >
-        Précédent
-      </Button>
-
-      {pageNumbers.map((pageNumber) => (
+    <nav aria-label="Pagination" className="flex flex-col items-center gap-3">
+      <div className="flex flex-wrap items-center justify-center gap-2">
         <Button
-          key={pageNumber}
-          variant={pageNumber === currentPage ? 'primary' : 'outline'}
-          onClick={() => onPageChange(pageNumber)}
+          variant="outline"
+          disabled={isFirstPage}
+          onClick={() => onPageChange(currentPage - 1)}
         >
-          {String(pageNumber)}
+          Précédent
         </Button>
-      ))}
 
-      <Button
-        variant="outline"
-        disabled={isLastPage}
-        onClick={() => onPageChange(currentPage + 1)}
-      >
-        Suivant
-      </Button>
+        {pageNumbers.map((pageNumber) => (
+          <Button
+            key={pageNumber}
+            variant={pageNumber === currentPage ? 'primary' : 'outline'}
+            onClick={() => onPageChange(pageNumber)}
+          >
+            {String(pageNumber)}
+          </Button>
+        ))}
+
+        <Button
+          variant="outline"
+          disabled={isLastPage}
+          onClick={() => onPageChange(currentPage + 1)}
+        >
+          Suivant
+        </Button>
+      </div>
+
+      <p aria-live="polite" className="text-sm text-muted">
+        Page {currentPage} sur {totalPages}
+      </p>
     </nav>
   );
 }

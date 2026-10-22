@@ -21,16 +21,17 @@ export default function CreateRecipePage() {
         />
       ) : (
         <>
+          <RecipeForm
+            isSubmitting={status === 'submitting'}
+            onValidSubmit={submitRecipe}
+          />
+          {/* Sous le formulaire, près du bouton d'envoi : visible sans avoir à remonter. */}
           {status === 'error' && (
             <ErrorMessage
               message={SUBMIT_ERROR_MESSAGE}
               onRetry={retrySubmit}
             />
           )}
-          <RecipeForm
-            isSubmitting={status === 'submitting'}
-            onValidSubmit={submitRecipe}
-          />
         </>
       )}
     </div>

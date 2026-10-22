@@ -1,4 +1,4 @@
-import { Link } from 'react-router';
+import ButtonLink from '../components/ui/ButtonLink.tsx';
 import { ROUTES } from '../routes';
 
 export default function NotFoundPage() {
@@ -9,12 +9,7 @@ export default function NotFoundPage() {
       <p className="mt-2 text-muted">
         Cette page n'existe pas ou a été déplacée.
       </p>
-      <Link
-        to={ROUTES.home}
-        className="mt-6 inline-block rounded-xl bg-brand px-5 py-3 font-semibold text-white hover:opacity-90"
-      >
-        Retour à l'accueil
-      </Link>
+      <ButtonLink to={ROUTES.home}>Retour à l'accueil</ButtonLink>
     </section>
   );
 }

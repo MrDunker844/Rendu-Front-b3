@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import Button from '../../../shared/components/ui/Button.tsx';
 import type { CreatedRecipe } from '../types/recipeForm.ts';
 
@@ -10,8 +11,19 @@ export default function CreatedRecipeSummary({
   recipe,
   onCreateAnother,
 }: CreatedRecipeSummaryProps) {
+  const summaryRef = useRef<HTMLElement>(null);
+
+  // Le formulaire était long : on remonte en haut pour montrer la confirmation,
+  // et on lui donne le focus pour qu'elle soit lue par les lecteurs d'écran.
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    summaryRef.current?.focus({ preventScroll: true });
+  }, []);
+
   return (
     <section
+      ref={summaryRef}
+      tabIndex={-1}
       role="status"
       className="flex flex-col gap-6 rounded-2xl border-2 border-success bg-success-light p-6"
     >
