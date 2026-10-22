@@ -11,3 +11,12 @@ export async function fetchRecipes(): Promise<Recipe[]> {
   const data: RecipeResponse = await response.json();
   return data.recipes;
 }
+
+export async function fetchRecipeById(recipeId: number): Promise<Recipe> {
+  const urlId = new URL(`${API_BASE_URL}/recipes/${recipeId}`);
+  const response = await fetch(urlId);
+  if (!response.ok) {
+    throw new Error(`Impossible de charger la recette ${recipeId}.`);
+  }
+  return await response.json();
+}
