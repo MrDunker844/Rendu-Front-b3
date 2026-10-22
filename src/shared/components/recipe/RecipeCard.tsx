@@ -1,5 +1,6 @@
 import type { Recipe } from '../../types/recipe.ts';
 import Badge from '../ui/Badge.tsx';
+import FavoriteButton from '../../../features/favorites/components/FavoriteButton.tsx';
 import { Link } from 'react-router';
 import { getRecipeDetailPath } from '../../routes.ts';
 
@@ -37,6 +38,10 @@ export default function RecipeCard({ recipe }: RecipeCardProps) {
           <span aria-hidden="true">⏱</span>{' '}
           {recipe.prepTimeMinutes + recipe.cookTimeMinutes} min
         </p>
+        {/* z-10 : le bouton passe au-dessus du ::after du lien, sinon le clic ouvrirait le détail */}
+        <div className="relative z-10">
+          <FavoriteButton recipe={recipe} />
+        </div>
       </div>
     </article>
   );

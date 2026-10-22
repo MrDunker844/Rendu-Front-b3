@@ -1,4 +1,5 @@
 import Badge from '../../../shared/components/ui/Badge.tsx';
+import FavoriteButton from '../../favorites/components/FavoriteButton.tsx';
 import type { Recipe } from '../../../shared/types/recipe.ts';
 
 type RecipeDetailsProps = {
@@ -41,6 +42,10 @@ export default function RecipeDetails({ recipe }: RecipeDetailsProps) {
             {recipe.mealType.map((mealType) => (
               <Badge key={mealType}>{mealType}</Badge>
             ))}
+          </div>
+
+          <div>
+            <FavoriteButton recipe={recipe} />
           </div>
 
           <dl className="grid grid-cols-2 gap-4 sm:grid-cols-3">
